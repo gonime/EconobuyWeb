@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Econobuy - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="
+    height: 100%;
+    background-color: rgb(214, 253, 255)">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <img src="~/Repository/Images/Logo.png" width="30" height="30" />
+        <h3 class="px-2">@Html.ActionLink(Session["clienteNome"].ToString(), "Home", "Cliente", new { area = "" }, new { @style = "color: rgb(217, 217, 2); text-decoration:none; " })</h3>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto align-items-center">
+
+                <li class="nav-item dropdown px-2">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" style="color: white; text-decoration:none; ">Novo Pedido</a>
+                    <div class="dropdown-menu text-center bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item">@Html.ActionLink("Pedido Econobuy", "NovoPedido", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                        <hr />
+                        <a class="dropdown-item">@Html.ActionLink("Pedido Tradicional", "NovoPedidoTradicional", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a>@Html.ActionLink("Consultar Pedidos", "ConsultarPedidos", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                </li>
+                @if (Session["ItensTrad"] != null)
+                {
+                    <li class="nav-item px-2">
+                        <a>@Html.ActionLink("Carrinho Tradicional", "ListaCarrinhoTrad", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                    </li>
+                }
+                @if (Session["Itens"] != null)
+                {
+                    <li class="nav-item px-2">
+                        <a>@Html.ActionLink("Carrinho Econobuy", "ListaCarrinho", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                    </li>
+                }
+                <li class="nav-item px-2">
+                    <a>@Html.ActionLink("Alterar Usuário", "alterarUsuario", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-warning ml-auto mr-1">@Html.ActionLink("Logout", "Logout", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</button>
+    </nav>
+    <div class="container body-content">
+        <br />
+        <br />
+        @RenderBody()
+        <br />
+        <br />
+        <footer class="fixed-bottom">
+            <p>&copy;@DateTime.Now.Year - Econobuy</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

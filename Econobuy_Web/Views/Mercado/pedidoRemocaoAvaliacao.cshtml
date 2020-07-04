@@ -1,0 +1,53 @@
+﻿@model Econobuy_Web.Models.PedidoRemocao
+
+@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Pedido de Remoção";
+}
+
+@using (Html.BeginForm("criaPedidoRemocao", "Mercado"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-10">
+        <h4>Pedido de Remoção</h4>
+        <hr />
+        @Html.HiddenFor(model => model.AvaliacaoID)
+
+
+        <div class="row">
+            <div class="col-md-4"><h5>Avaliação</h5></div>
+            <div class="col-md-6"><h5>Descrição</h5></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.DisplayFor(model => model.NotaAvaliacao, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.DescricaoAvaliacao, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <hr />
+
+
+        <div class="row">
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MsgRequisitante, new { @cols = "100", @rows = "4", @style = "width:100%;", @class = "form-control col-md-10", @placeholder = "Descreva seu problema aqui!" })
+                @Html.ValidationMessageFor(model => model.MsgRequisitante, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br/>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enviar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+

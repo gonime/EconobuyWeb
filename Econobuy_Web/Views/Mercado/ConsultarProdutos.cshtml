@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Econobuy_Web.Models.ConsultaProdutos>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Produtos";
+}
+
+<h2>Produtos</h2>
+<br/>
+@using (Html.BeginForm("ConsultarProdutos", "Mercado", FormMethod.Get))
+{
+    @Html.DropDownList("coluna", new List<SelectListItem> {
+                new SelectListItem { Value = "Nome", Text = "Nome" },
+                new SelectListItem { Value = "Departamento", Text = "Departamento" },
+                new SelectListItem { Value = "Categoria", Text = "Categoria" },
+                new SelectListItem { Value = "Produto", Text = "Produto" },
+                new SelectListItem { Value = "Código", Text = "Código" }
+                }, new { @class = "myselect", @style = "color: black" }) @Html.TextBox("search", null, new { @style = "margin-left: 5px" })
+                <input type="submit" value="Buscar" class="btn btn-primary text-white">
+                @Html.ActionLink("Limpar Pesquisa", "ConsultarProdutos", "Mercado", new { area = "" }, new { @style = "color: white; text-decoration:none;", @class = "btn btn-primary" })
+            }
+<br/>
+<table class="table table-hover table-bordered bg-light">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tradicional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria_01)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria_02)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria_03)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+                <div><img src="/Mercado/MostraImgProduto/@item.Id" alt="" height=120 width=120 /></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tradicional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria_01)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria_02)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria_03)
+            </td>
+            <td>
+                @Html.ActionLink("Visualizar", "EditarProduto", new { id = item.Id }) |
+                @Html.ActionLink("Ativar/Desativar", "AtivaProduto", new { id = item.Id }) |
+                @Html.ActionLink("Ativar/Desativar Tradicional", "AtivaTradProduto", new { id = item.Id }) |
+                @Html.ActionLink("Deletar", "DeletaProduto", new { confirm = true, id = item.Id }, new { onclick = "return confirm('Confirme a exclusão')" })
+            </td>
+        </tr>
+    }
+
+</table>

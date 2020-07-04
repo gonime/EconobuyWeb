@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EconobuyModelStoreContainer" CdmEntityContainer="EconobuyEntities">
+    <EntitySetMapping Name="tb_avaliacao_cliente">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_avaliacao_cliente">
+        <MappingFragment StoreEntitySet="tb_avaliacao_cliente">
+          <ScalarProperty Name="av_cli_in_codigo" ColumnName="av_cli_in_codigo" />
+          <ScalarProperty Name="av_cli_dec_nota" ColumnName="av_cli_dec_nota" />
+          <ScalarProperty Name="cli_in_codigo" ColumnName="cli_in_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_avaliacao_mercado">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_avaliacao_mercado">
+        <MappingFragment StoreEntitySet="tb_avaliacao_mercado">
+          <ScalarProperty Name="av_mer_in_codigo" ColumnName="av_mer_in_codigo" />
+          <ScalarProperty Name="av_mer_dec_nota" ColumnName="av_mer_dec_nota" />
+          <ScalarProperty Name="mer_in_codigo" ColumnName="mer_in_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_categoria_n01">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_categoria_n01">
+        <MappingFragment StoreEntitySet="tb_categoria_n01">
+          <ScalarProperty Name="cat01_in_codigo" ColumnName="cat01_in_codigo" />
+          <ScalarProperty Name="cat01_st_nome" ColumnName="cat01_st_nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_categoria_n02">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_categoria_n02">
+        <MappingFragment StoreEntitySet="tb_categoria_n02">
+          <ScalarProperty Name="cat02_in_codigo" ColumnName="cat02_in_codigo" />
+          <ScalarProperty Name="cat02_st_nome" ColumnName="cat02_st_nome" />
+          <ScalarProperty Name="cat01_in_codigo" ColumnName="cat01_in_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_categoria_n03">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_categoria_n03">
+        <MappingFragment StoreEntitySet="tb_categoria_n03">
+          <ScalarProperty Name="cat03_in_codigo" ColumnName="cat03_in_codigo" />
+          <ScalarProperty Name="cat03_st_nome" ColumnName="cat03_st_nome" />
+          <ScalarProperty Name="cat02_in_codigo" ColumnName="cat02_in_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_cliente">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_cliente">
+        <MappingFragment StoreEntitySet="tb_cliente">
+          <ScalarProperty Name="cli_in_codigo" ColumnName="cli_in_codigo" />
+          <ScalarProperty Name="cli_st_nome" ColumnName="cli_st_nome" />
+          <ScalarProperty Name="cli_st_user" ColumnName="cli_st_user" />
+          <ScalarProperty Name="cli_st_senha" ColumnName="cli_st_senha" />
+          <ScalarProperty Name="cli_st_CPF" ColumnName="cli_st_CPF" />
+          <ScalarProperty Name="cli_st_email" ColumnName="cli_st_email" />
+          <ScalarProperty Name="end_in_codigo" ColumnName="end_in_codigo" />
+          <ScalarProperty Name="cli_bit_active" ColumnName="cli_bit_active" />
+          <ScalarProperty Name="cli_bit_advert" ColumnName="cli_bit_advert" />
+          <ScalarProperty Name="cli_bit_conf_email" ColumnName="cli_bit_conf_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_cliente_img">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_cliente_img">
+        <MappingFragment StoreEntitySet="tb_cliente_img">
+          <ScalarProperty Name="cli_img_in_codigo" ColumnName="cli_img_in_codigo" />
+          <ScalarProperty Name="cli_in_codigo" ColumnName="cli_in_codigo" />
+          <ScalarProperty Name="cli_img" ColumnName="cli_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_endereco">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_endereco">
+        <MappingFragment StoreEntitySet="tb_endereco">
+          <ScalarProperty Name="end_in_codigo" ColumnName="end_in_codigo" />
+          <ScalarProperty Name="end_st_CEP" ColumnName="end_st_CEP" />
+          <ScalarProperty Name="end_st_log" ColumnName="end_st_log" />
+          <ScalarProperty Name="end_st_num" ColumnName="end_st_num" />
+          <ScalarProperty Name="end_st_compl" ColumnName="end_st_compl" />
+          <ScalarProperty Name="end_st_bairro" ColumnName="end_st_bairro" />
+          <ScalarProperty Name="end_st_cidade" ColumnName="end_st_cidade" />
+          <ScalarProperty Name="end_st_uf" ColumnName="end_st_uf" />
+          <ScalarProperty Name="end_st_tel1" ColumnName="end_st_tel1" />
+          <ScalarProperty Name="end_st_tel2" ColumnName="end_st_tel2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_item">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_item">
+        <MappingFragment StoreEntitySet="tb_item">
+          <ScalarProperty Name="item_in_codigo" ColumnName="item_in_codigo" />
+          <ScalarProperty Name="prod_in_codigo" ColumnName="prod_in_codigo" />
+          <ScalarProperty Name="ped_in_codigo" ColumnName="ped_in_codigo" />
+          <ScalarProperty Name="item_in_qtde" ColumnName="item_in_qtde" />
+          <ScalarProperty Name="item_dec_valor" ColumnName="item_dec_valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_mercado">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_mercado">
+        <MappingFragment StoreEntitySet="tb_mercado">
+          <ScalarProperty Name="mer_in_codigo" ColumnName="mer_in_codigo" />
+          <ScalarProperty Name="mer_st_nome" ColumnName="mer_st_nome" />
+          <ScalarProperty Name="mer_st_user" ColumnName="mer_st_user" />
+          <ScalarProperty Name="mer_st_senha" ColumnName="mer_st_senha" />
+          <ScalarProperty Name="mer_st_CPNJ" ColumnName="mer_st_CPNJ" />
+          <ScalarProperty Name="mer_st_email" ColumnName="mer_st_email" />
+          <ScalarProperty Name="end_in_codigo" ColumnName="end_in_codigo" />
+          <ScalarProperty Name="mer_bit_active" ColumnName="mer_bit_active" />
+          <ScalarProperty Name="mer_bit_advert" ColumnName="mer_bit_advert" />
+          <ScalarProperty Name="cli_bit_conf_email" ColumnName="cli_bit_conf_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_mercado_img">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_mercado_img">
+        <MappingFragment StoreEntitySet="tb_mercado_img">
+          <ScalarProperty Name="mer_img_in_codigo" ColumnName="mer_img_in_codigo" />
+          <ScalarProperty Name="mer_in_codigo" ColumnName="mer_in_codigo" />
+          <ScalarProperty Name="mer_img" ColumnName="mer_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_pedido">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_pedido">
+        <MappingFragment StoreEntitySet="tb_pedido">
+          <ScalarProperty Name="ped_in_codigo" ColumnName="ped_in_codigo" />
+          <ScalarProperty Name="cli_in_codigo" ColumnName="cli_in_codigo" />
+          <ScalarProperty Name="mer_in_codigo" ColumnName="mer_in_codigo" />
+          <ScalarProperty Name="data_dt_pedido" ColumnName="data_dt_pedido" />
+          <ScalarProperty Name="end_in_codigo" ColumnName="end_in_codigo" />
+          <ScalarProperty Name="ped_dec_valor" ColumnName="ped_dec_valor" />
+          <ScalarProperty Name="ped_status" ColumnName="ped_status" />
+          <ScalarProperty Name="ped_st_msg" ColumnName="ped_st_msg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_pedido_avaliacao_cliente">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_pedido_avaliacao_cliente">
+        <MappingFragment StoreEntitySet="tb_pedido_avaliacao_cliente">
+          <ScalarProperty Name="ped_av_cli_in_codigo" ColumnName="ped_av_cli_in_codigo" />
+          <ScalarProperty Name="ped_av_cli_dec_nota" ColumnName="ped_av_cli_dec_nota" />
+          <ScalarProperty Name="ped_av_cli_st_descricao" ColumnName="ped_av_cli_st_descricao" />
+          <ScalarProperty Name="ped_in_codigo" ColumnName="ped_in_codigo" />
+          <ScalarProperty Name="av_mer_in_codigo" ColumnName="av_mer_in_codigo" />
+          <ScalarProperty Name="ped_bit_active" ColumnName="ped_bit_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_pedido_avaliacao_mercado">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_pedido_avaliacao_mercado">
+        <MappingFragment StoreEntitySet="tb_pedido_avaliacao_mercado">
+          <ScalarProperty Name="ped_av_mer_in_codigo" ColumnName="ped_av_mer_in_codigo" />
+          <ScalarProperty Name="ped_av_mer_dec_nota" ColumnName="ped_av_mer_dec_nota" />
+          <ScalarProperty Name="ped_av_mer_st_descricao" ColumnName="ped_av_mer_st_descricao" />
+          <ScalarProperty Name="ped_in_codigo" ColumnName="ped_in_codigo" />
+          <ScalarProperty Name="av_cli_in_codigo" ColumnName="av_cli_in_codigo" />
+          <ScalarProperty Name="ped_bit_active" ColumnName="ped_bit_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_pedido_remocao_avaliacao_cliente">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_pedido_remocao_avaliacao_cliente">
+        <MappingFragment StoreEntitySet="tb_pedido_remocao_avaliacao_cliente">
+          <ScalarProperty Name="ped_rem_av_cli_in_codigo" ColumnName="ped_rem_av_cli_in_codigo" />
+          <ScalarProperty Name="ped_av_mer_in_codigo" ColumnName="ped_av_mer_in_codigo" />
+          <ScalarProperty Name="ped_rem_av_cli_st_msg_cli" ColumnName="ped_rem_av_cli_st_msg_cli" />
+          <ScalarProperty Name="ped_rem_av_cli_st_msg_adm" ColumnName="ped_rem_av_cli_st_msg_adm" />
+          <ScalarProperty Name="ped_status" ColumnName="ped_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_pedido_remocao_avaliacao_mercado">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_pedido_remocao_avaliacao_mercado">
+        <MappingFragment StoreEntitySet="tb_pedido_remocao_avaliacao_mercado">
+          <ScalarProperty Name="ped_rem_av_mer_in_codigo" ColumnName="ped_rem_av_mer_in_codigo" />
+          <ScalarProperty Name="ped_av_cli_in_codigo" ColumnName="ped_av_cli_in_codigo" />
+          <ScalarProperty Name="ped_rem_av_mer_st_msg_mer" ColumnName="ped_rem_av_mer_st_msg_mer" />
+          <ScalarProperty Name="ped_rem_av_mer_st_msg_adm" ColumnName="ped_rem_av_mer_st_msg_adm" />
+          <ScalarProperty Name="ped_status" ColumnName="ped_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_produto">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_produto">
+        <MappingFragment StoreEntitySet="tb_produto">
+          <ScalarProperty Name="prod_in_codigo" ColumnName="prod_in_codigo" />
+          <ScalarProperty Name="prod_st_nome" ColumnName="prod_st_nome" />
+          <ScalarProperty Name="prod_st_descricao" ColumnName="prod_st_descricao" />
+          <ScalarProperty Name="prod_dec_valor_un" ColumnName="prod_dec_valor_un" />
+          <ScalarProperty Name="prod_st_cod_mer" ColumnName="prod_st_cod_mer" />
+          <ScalarProperty Name="prod_bit_trad_active" ColumnName="prod_bit_trad_active" />
+          <ScalarProperty Name="prod_bit_active" ColumnName="prod_bit_active" />
+          <ScalarProperty Name="mer_in_codigo" ColumnName="mer_in_codigo" />
+          <ScalarProperty Name="cat01_in_codigo" ColumnName="cat01_in_codigo" />
+          <ScalarProperty Name="cat02_in_codigo" ColumnName="cat02_in_codigo" />
+          <ScalarProperty Name="cat03_in_codigo" ColumnName="cat03_in_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_produto_img">
+      <EntityTypeMapping TypeName="EconobuyModel.tb_produto_img">
+        <MappingFragment StoreEntitySet="tb_produto_img">
+          <ScalarProperty Name="prod_img_in_codigo" ColumnName="prod_img_in_codigo" />
+          <ScalarProperty Name="prod_in_codigo" ColumnName="prod_in_codigo" />
+          <ScalarProperty Name="prod_img" ColumnName="prod_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

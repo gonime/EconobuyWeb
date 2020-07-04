@@ -1,0 +1,249 @@
+﻿@model Econobuy_Web.Models.VisualizarPedido
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Visualizar Pedido";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="col-md-10">
+        <h2>Pedido</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-10">
+                <h4>@Html.DisplayFor(model => model.Mercado_Ou_Cliente, new { htmlAttributes = new { @class = "form-control" } })</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h6>
+                    @Html.DisplayFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+                </h6>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row"><div class="col-md-12"><h4>Endereço</h4></div></div>
+        <br />
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "control-label" })</h5></div>
+
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label" })</h5></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label" })</h5></div>
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label" })</h5></div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control" } }),
+                @Html.DisplayFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row"><div class="col-md-12"><h4>Contato</h4></div></div>
+        <br />
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })</h5></div>
+            <div class="col-md-3"><h5>@Html.LabelFor(model => model.Telefone_1, htmlAttributes: new { @class = "control-label" })</h5></div>
+            <div class="col-md-3"><h5>@Html.LabelFor(model => model.Telefone_2, htmlAttributes: new { @class = "control-label" })</h5></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-3">
+                @Html.DisplayFor(model => model.Telefone_1, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            @if (Model.Telefone_2 == "(__) ____-_____")
+            {<div class="col-md-3">
+                    Não informado
+                </div> }
+            else
+            {<div class="col-md-3">
+                    @Html.DisplayFor(model => model.Telefone_2, new { htmlAttributes = new { @class = "form-control" } })
+                </div>}
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })</h5></div>
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label" })</h5></div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-6">
+                R$ @Html.DisplayFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <br />
+        @if (Model.Msg != "")
+        {
+            <div class="row">
+                <div class="col-md-10"><h5>Mensagem de nosso parceiro</h5></div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-10">@Html.DisplayFor(model => model.Msg, new { htmlAttributes = new { @class = "form-control" } })</div>
+
+            </div>
+        }
+        @if (Model.AvCliente != 0 || Model.AvMercado != 0)
+        {
+
+            <hr />
+            <div class="row"><div class="col-md-12"><h4>Avaliações</h4></div></div>
+            <br />
+        }
+
+        @if (Model.AvCliente != 0)
+        {
+            <div class="row">
+                <div class="col-md-4"><h5>Sua avaliação</h5></div>
+                <div class="col-md-6"><h5>Descrição</h5></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.AvCliente, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.AvCli, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <br />
+        }
+        @if (Model.AvCliente == 0 && Model.Status == "Entregue")
+        {
+            <div class="row">
+                <div class="col-md-12"><btn class="btn btn-warning"> @Html.ActionLink("Avalie seu pedido", "avaliaPedidoEntregue", new { id = Model.PedID }, new { @style = "color: white; text-decoration:none; " })</btn></div>
+            </div>
+        }
+        @if (Model.AvMercado != 0)
+        {
+            <div class="row">
+                <div class="col-md-4"><h5>Avaliação de nosso parceiro</h5></div>
+                <div class="col-md-6"><h5>Descrição</h5></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.AvMercado, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.AvMer, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <br />
+            if (Model.AvActive == true && Model.PedRemID == 0)
+            {
+                <div class="row">
+                    <div class="col-md-10"><h6>Achou que a avaliação de nosso parceiro foi injusta? @Html.ActionLink("Clique aqui", "pedidoRemocaoAvaliacao", new { id = Model.PedID }) e faça um pedido de remoção agora!</h6></div>
+                </div>
+            }
+            else if (Model.PedRemID != 0 && Model.AvActive)
+            {
+                <div class="row">
+                    <div class="col-md-10"><h6>@Html.ActionLink("Clique aqui", "acompanharPedidoRemocao", new { id = Model.PedRemID }) para acompanhar sua solicitação de remoção!</h6></div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-10"><h6>Esta avaliação foi desativada e não constará na sua avaliação total</h6></div>
+                </div>
+            }
+        }
+        <hr />
+
+        <div class="row"><div class="col-md-12"><h4>Produtos</h4></div></div>
+        <br />
+        @Html.HiddenFor(model => model.PedID)
+
+        <table class="table table-hover table-bordered bg-light">
+            <tr class="bg-dark text-light">
+                <th>
+                    @Html.DisplayNameFor(model => model.Itens[0].Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Itens[0].valor_un)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Itens[0].Qtde)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Itens[0].valor_total)
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Itens)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+
+                        <div><img src="/Cliente/MostraImagemProduto/@item.ProdID" alt="" height=120 width=120 style="margin-top:5px" /></div>
+                    </td>
+                    <td>
+                        R$ @Html.DisplayFor(modelItem => item.valor_un)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Qtde)
+                    </td>
+                    <td>
+                        R$ @Html.DisplayFor(modelItem => item.valor_total)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @if (Model.Status == "Aprovado")
+        {
+
+            <div class="text-center">
+                <button type="button" class="btn btn-outline-warning active btn-lg  text-white text-decoration-none">
+                    @Html.ActionLink("Marcar como Entregue", "marcarPedidoEntregue", new { id = Model.PedID }, new { @style = "color: white; text-decoration:none; " })
+                </button>
+            </div>
+        }
+        else if (Model.Status == "Aguardando")
+        {
+            <div class="text-center">
+                <button type="button" class="btn btn-outline-warning active btn-lg  text-white text-decoration-none">
+                    @Html.ActionLink("Cancelar Pedido", "cancelarPedido", new { id = Model.PedID }, new { @style = "color: white; text-decoration:none; ", onclick = "return confirm('Confirme o cancelamento')" })
+                </button>
+            </div>
+        }
+
+    </div>
+}
+

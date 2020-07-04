@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Home";
+}
+
+<div class="text-center col-md-12">
+    <img src="/Mercado/MostraLogo/@Convert.ToInt32(Session["mercadoID"])" alt="" height=150 width=150 />
+    <h2>Seja bem-vindo @Session["mercadoNome"].ToString()</h2>
+</div>
+
+
+
+

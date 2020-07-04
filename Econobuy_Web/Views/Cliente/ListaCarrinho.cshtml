@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Econobuy_Web.Models.Carrinho>
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Carrinho Econobuy";
+}
+
+<h2>Carrinho</h2>
+<hr/>
+<div>
+    <button type="button" class="btn btn-outline-warning active  text-white text-decoration-none">
+        @Html.ActionLink("Voltar para a lista", "NovoPedido", new { search = "" }, new { @style = "color: white; text-decoration:none; " })
+    </button>
+
+    <button type="button" class="btn btn-outline-warning active  text-white text-decoration-none">
+        @Html.ActionLink("Ver Pedido", "FinalizaPedidoEconobuy", new { search = "" }, new { @style = "color: white; text-decoration:none; " })
+    </button>
+</div>
+<br/>
+
+<table class="table table-hover table-bordered bg-light">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qtde)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtde)
+            </td>
+            <td>
+                @Html.ActionLink("Remover", "DeletaItemCarrinho", new { id = item.Id }, new { onclick = "return confirm('Confirme a remoção')" })
+            </td>
+        </tr>
+    }
+
+</table>

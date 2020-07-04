@@ -1,0 +1,63 @@
+﻿@model Econobuy_Web.Models.Carrinho
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = Model.Nome;
+}
+
+
+<div>
+    <button type="button" class="btn btn-outline-warning active  text-white text-decoration-none">
+        @Html.ActionLink("Voltar a Lista", "NovoPedido", new { search = "" }, new { @style = "color: white; text-decoration:none; " })
+    </button>
+</div>
+
+@using (Html.BeginForm("AdicionaAoCarrinho", "Cliente"))
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table table-hover table-bordered bg-light">
+        <tr class="bg-dark text-light">
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                <div><img src="/Cliente/MostraImgModoEconobuy/@Model.Cat03ID" alt="" height=150 width=150 /></div>
+                @Html.DisplayFor(model => model.Nome)
+                @Html.HiddenFor(model => model.Nome)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(model => model.Valor)
+                @Html.HiddenFor(model => model.Valor)
+            </td>
+            @Html.HiddenFor(model => model.Cat03ID)
+        </tr>
+
+    </table>
+
+
+    <div class="row" style="margin-top: 50px">
+        <div class="col-md-2"><h4>Quantidade:</h4></div>
+        <div class="col-md-1">
+            @Html.TextBoxFor(model => model.Qtde, new { type = "number", min = "1", max = "50" })
+        </div>
+
+        <div class="col-md-3">
+            <input type="submit" name="submitButton" value="Adicionar ao carrinho" class="btn btn-primary" style="margin-left:5px" />
+        </div>
+
+    </div>
+}
+<br/>
+<p>Obs: Imagem meramente ilustrativa, pode não refletir o produto final ao finalizar o pedido! <br/> Valor do produto está sujeito a mudança conforme novos produtos forem adicionados!</p>
+

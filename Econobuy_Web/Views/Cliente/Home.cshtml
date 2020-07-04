@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Home";
+}
+
+    <div class="col-md-12">
+        <div class="text-center col-md-12" style="margin-top:100px">
+            <h2>Seja bem-vindo @Session["clienteNome"].ToString()</h2>
+        </div>
+
+        <div class="col-md-12 text-center" style="margin-top:80px"><h3>Veja suas opções:</h3></div>
+        <div class="row" style="margin-top:80px; margin-left:10px">
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><btn class="btn btn-warning">@Html.ActionLink("Novo Pedido Econobuy", "NovoPedido", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</btn></div>
+            <div class="col-md-3"><btn class="btn btn-warning">@Html.ActionLink("Novo Pedido Tradicional", "NovoPedidoTradicional", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</btn></div>
+            <div class="col-md-3"><btn class="btn btn-warning">@Html.ActionLink("Consultar Pedidos", "ConsultarPedidos", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</btn></div>
+        </div>
+    </div>

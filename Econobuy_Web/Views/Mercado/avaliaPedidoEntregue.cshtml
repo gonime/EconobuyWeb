@@ -1,0 +1,60 @@
+﻿@model Econobuy_Web.Models.tb_pedido_avaliacao_mercado
+
+@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Avaliar Pedido";
+}
+
+
+@using (Html.BeginForm("avaliarPedidoEntregue", "Mercado"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Avalie seu pedido!</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <h4>Nota</h4>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ped_av_mer_dec_nota, new List<SelectListItem> {
+                new SelectListItem { Value = "0.5", Text = "0.5" },
+                new SelectListItem { Value = "1.0", Text = "1.0" },
+                new SelectListItem { Value = "1.5", Text = "1.5" },
+                new SelectListItem { Value = "2.0", Text = "2.0" },
+                new SelectListItem { Value = "2.5", Text = "2.5" },
+                new SelectListItem { Value = "3.0", Text = "3.0" },
+                new SelectListItem { Value = "3.5", Text = "3.5" },
+                new SelectListItem { Value = "4.0", Text = "4.0" },
+                new SelectListItem { Value = "4.5", Text = "4.5" },
+                new SelectListItem { Value = "5.0", Text = "5.0" }
+                }, new { @class = "myselect form-control", @style = "color: black" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ped_av_mer_st_descricao, new { @cols = "100", @rows = "4", @style = "width:100%;", @class = "form-control col-md-10", @placeholder = "Descreva sua experiência aqui!" })
+            </div>
+        </div>
+
+
+        @Html.HiddenFor(model => model.ped_in_codigo)
+
+        @Html.HiddenFor(model => model.av_cli_in_codigo)
+
+        @Html.HiddenFor(model => model.ped_bit_active)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Avaliar" class="btn btn-outline-primary active text-white text-decoration-none" />
+            </div>
+        </div>
+    </div>
+}

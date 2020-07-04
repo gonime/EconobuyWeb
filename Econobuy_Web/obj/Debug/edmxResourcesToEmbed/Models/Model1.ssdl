@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EconobuyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_avaliacao_cliente">
+    <Key>
+      <PropertyRef Name="av_cli_in_codigo" />
+    </Key>
+    <Property Name="av_cli_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="av_cli_dec_nota" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="cli_in_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_avaliacao_mercado">
+    <Key>
+      <PropertyRef Name="av_mer_in_codigo" />
+    </Key>
+    <Property Name="av_mer_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="av_mer_dec_nota" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="mer_in_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_categoria_n01">
+    <Key>
+      <PropertyRef Name="cat01_in_codigo" />
+    </Key>
+    <Property Name="cat01_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat01_st_nome" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_categoria_n02">
+    <Key>
+      <PropertyRef Name="cat02_in_codigo" />
+    </Key>
+    <Property Name="cat02_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat02_st_nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="cat01_in_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_categoria_n03">
+    <Key>
+      <PropertyRef Name="cat03_in_codigo" />
+    </Key>
+    <Property Name="cat03_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat03_st_nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="cat02_in_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_cliente">
+    <Key>
+      <PropertyRef Name="cli_in_codigo" />
+    </Key>
+    <Property Name="cli_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cli_st_nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="cli_st_user" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cli_st_senha" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cli_st_CPF" Type="varchar" MaxLength="15" />
+    <Property Name="cli_st_email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="end_in_codigo" Type="int" Nullable="false" />
+    <Property Name="cli_bit_active" Type="bit" Nullable="false" />
+    <Property Name="cli_bit_advert" Type="bit" Nullable="false" />
+    <Property Name="cli_bit_conf_email" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_cliente_img">
+    <Key>
+      <PropertyRef Name="cli_img_in_codigo" />
+    </Key>
+    <Property Name="cli_img_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cli_in_codigo" Type="int" Nullable="false" />
+    <Property Name="cli_img" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_endereco">
+    <Key>
+      <PropertyRef Name="end_in_codigo" />
+    </Key>
+    <Property Name="end_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="end_st_CEP" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="end_st_log" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="end_st_num" Type="varchar" MaxLength="10" />
+    <Property Name="end_st_compl" Type="varchar" MaxLength="150" />
+    <Property Name="end_st_bairro" Type="varchar" MaxLength="50" />
+    <Property Name="end_st_cidade" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="end_st_uf" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="end_st_tel1" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="end_st_tel2" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="tb_item">
+    <Key>
+      <PropertyRef Name="item_in_codigo" />
+    </Key>
+    <Property Name="item_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prod_in_codigo" Type="int" Nullable="false" />
+    <Property Name="ped_in_codigo" Type="int" Nullable="false" />
+    <Property Name="item_in_qtde" Type="int" Nullable="false" />
+    <Property Name="item_dec_valor" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_mercado">
+    <Key>
+      <PropertyRef Name="mer_in_codigo" />
+    </Key>
+    <Property Name="mer_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mer_st_nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="mer_st_user" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="mer_st_senha" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="mer_st_CPNJ" Type="varchar" MaxLength="21" Nullable="false" />
+    <Property Name="mer_st_email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="end_in_codigo" Type="int" Nullable="false" />
+    <Property Name="mer_bit_active" Type="bit" Nullable="false" />
+    <Property Name="mer_bit_advert" Type="bit" Nullable="false" />
+    <Property Name="cli_bit_conf_email" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_mercado_img">
+    <Key>
+      <PropertyRef Name="mer_img_in_codigo" />
+    </Key>
+    <Property Name="mer_img_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mer_in_codigo" Type="int" Nullable="false" />
+    <Property Name="mer_img" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_pedido">
+    <Key>
+      <PropertyRef Name="ped_in_codigo" />
+    </Key>
+    <Property Name="ped_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cli_in_codigo" Type="int" Nullable="false" />
+    <Property Name="mer_in_codigo" Type="int" Nullable="false" />
+    <Property Name="data_dt_pedido" Type="datetime" Nullable="false" />
+    <Property Name="end_in_codigo" Type="int" Nullable="false" />
+    <Property Name="ped_dec_valor" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="ped_status" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ped_st_msg" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_pedido_avaliacao_cliente">
+    <Key>
+      <PropertyRef Name="ped_av_cli_in_codigo" />
+    </Key>
+    <Property Name="ped_av_cli_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ped_av_cli_dec_nota" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="ped_av_cli_st_descricao" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="ped_in_codigo" Type="int" Nullable="false" />
+    <Property Name="av_mer_in_codigo" Type="int" Nullable="false" />
+    <Property Name="ped_bit_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_pedido_avaliacao_mercado">
+    <Key>
+      <PropertyRef Name="ped_av_mer_in_codigo" />
+    </Key>
+    <Property Name="ped_av_mer_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ped_av_mer_dec_nota" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="ped_av_mer_st_descricao" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="ped_in_codigo" Type="int" Nullable="false" />
+    <Property Name="av_cli_in_codigo" Type="int" Nullable="false" />
+    <Property Name="ped_bit_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_pedido_remocao_avaliacao_cliente">
+    <Key>
+      <PropertyRef Name="ped_rem_av_cli_in_codigo" />
+    </Key>
+    <Property Name="ped_rem_av_cli_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ped_av_mer_in_codigo" Type="int" Nullable="false" />
+    <Property Name="ped_rem_av_cli_st_msg_cli" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="ped_rem_av_cli_st_msg_adm" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="ped_status" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_pedido_remocao_avaliacao_mercado">
+    <Key>
+      <PropertyRef Name="ped_rem_av_mer_in_codigo" />
+    </Key>
+    <Property Name="ped_rem_av_mer_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ped_av_cli_in_codigo" Type="int" Nullable="false" />
+    <Property Name="ped_rem_av_mer_st_msg_mer" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="ped_rem_av_mer_st_msg_adm" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="ped_status" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_produto">
+    <Key>
+      <PropertyRef Name="prod_in_codigo" />
+    </Key>
+    <Property Name="prod_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prod_st_nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="prod_st_descricao" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="prod_dec_valor_un" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="prod_st_cod_mer" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="prod_bit_trad_active" Type="bit" Nullable="false" />
+    <Property Name="prod_bit_active" Type="bit" Nullable="false" />
+    <Property Name="mer_in_codigo" Type="int" Nullable="false" />
+    <Property Name="cat01_in_codigo" Type="int" Nullable="false" />
+    <Property Name="cat02_in_codigo" Type="int" Nullable="false" />
+    <Property Name="cat03_in_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_produto_img">
+    <Key>
+      <PropertyRef Name="prod_img_in_codigo" />
+    </Key>
+    <Property Name="prod_img_in_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prod_in_codigo" Type="int" Nullable="false" />
+    <Property Name="prod_img" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_av_cli_cli_in_codigo">
+    <End Role="tb_cliente" Type="Self.tb_cliente" Multiplicity="1" />
+    <End Role="tb_avaliacao_cliente" Type="Self.tb_avaliacao_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cliente">
+        <PropertyRef Name="cli_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_avaliacao_cliente">
+        <PropertyRef Name="cli_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_av_mer_mer_in_codigo">
+    <End Role="tb_mercado" Type="Self.tb_mercado" Multiplicity="1" />
+    <End Role="tb_avaliacao_mercado" Type="Self.tb_avaliacao_mercado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_mercado">
+        <PropertyRef Name="mer_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_avaliacao_mercado">
+        <PropertyRef Name="mer_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cat02_cat01_in_codigo">
+    <End Role="tb_categoria_n01" Type="Self.tb_categoria_n01" Multiplicity="1" />
+    <End Role="tb_categoria_n02" Type="Self.tb_categoria_n02" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_categoria_n01">
+        <PropertyRef Name="cat01_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_categoria_n02">
+        <PropertyRef Name="cat01_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cat03_cat02_in_codigo">
+    <End Role="tb_categoria_n02" Type="Self.tb_categoria_n02" Multiplicity="1" />
+    <End Role="tb_categoria_n03" Type="Self.tb_categoria_n03" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_categoria_n02">
+        <PropertyRef Name="cat02_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_categoria_n03">
+        <PropertyRef Name="cat02_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cli_end_in_codigo">
+    <End Role="tb_endereco" Type="Self.tb_endereco" Multiplicity="1" />
+    <End Role="tb_cliente" Type="Self.tb_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_endereco">
+        <PropertyRef Name="end_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_cliente">
+        <PropertyRef Name="end_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cli_img_cli_in_codigo">
+    <End Role="tb_cliente" Type="Self.tb_cliente" Multiplicity="1" />
+    <End Role="tb_cliente_img" Type="Self.tb_cliente_img" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cliente">
+        <PropertyRef Name="cli_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_cliente_img">
+        <PropertyRef Name="cli_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_item_ped_in_codigo">
+    <End Role="tb_pedido" Type="Self.tb_pedido" Multiplicity="1" />
+    <End Role="tb_item" Type="Self.tb_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pedido">
+        <PropertyRef Name="ped_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_item">
+        <PropertyRef Name="ped_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_item_prod_in_codigo">
+    <End Role="tb_produto" Type="Self.tb_produto" Multiplicity="1" />
+    <End Role="tb_item" Type="Self.tb_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_produto">
+        <PropertyRef Name="prod_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_item">
+        <PropertyRef Name="prod_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_mer_end_in_codigo">
+    <End Role="tb_endereco" Type="Self.tb_endereco" Multiplicity="1" />
+    <End Role="tb_mercado" Type="Self.tb_mercado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_endereco">
+        <PropertyRef Name="end_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_mercado">
+        <PropertyRef Name="end_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_mer_img_mer_in_codigo">
+    <End Role="tb_mercado" Type="Self.tb_mercado" Multiplicity="1" />
+    <End Role="tb_mercado_img" Type="Self.tb_mercado_img" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_mercado">
+        <PropertyRef Name="mer_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_mercado_img">
+        <PropertyRef Name="mer_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_av_cli_av_mer_in_codigo">
+    <End Role="tb_avaliacao_mercado" Type="Self.tb_avaliacao_mercado" Multiplicity="1" />
+    <End Role="tb_pedido_avaliacao_cliente" Type="Self.tb_pedido_avaliacao_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_avaliacao_mercado">
+        <PropertyRef Name="av_mer_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido_avaliacao_cliente">
+        <PropertyRef Name="av_mer_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_av_cli_ped_in_codigo">
+    <End Role="tb_pedido" Type="Self.tb_pedido" Multiplicity="1" />
+    <End Role="tb_pedido_avaliacao_cliente" Type="Self.tb_pedido_avaliacao_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pedido">
+        <PropertyRef Name="ped_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido_avaliacao_cliente">
+        <PropertyRef Name="ped_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_av_mer_av_cli_in_codigo">
+    <End Role="tb_avaliacao_cliente" Type="Self.tb_avaliacao_cliente" Multiplicity="1" />
+    <End Role="tb_pedido_avaliacao_mercado" Type="Self.tb_pedido_avaliacao_mercado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_avaliacao_cliente">
+        <PropertyRef Name="av_cli_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido_avaliacao_mercado">
+        <PropertyRef Name="av_cli_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_av_mer_ped_in_codigo">
+    <End Role="tb_pedido" Type="Self.tb_pedido" Multiplicity="1" />
+    <End Role="tb_pedido_avaliacao_mercado" Type="Self.tb_pedido_avaliacao_mercado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pedido">
+        <PropertyRef Name="ped_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido_avaliacao_mercado">
+        <PropertyRef Name="ped_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_cli_in_codigo">
+    <End Role="tb_cliente" Type="Self.tb_cliente" Multiplicity="1" />
+    <End Role="tb_pedido" Type="Self.tb_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cliente">
+        <PropertyRef Name="cli_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido">
+        <PropertyRef Name="cli_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_end_in_codigo">
+    <End Role="tb_endereco" Type="Self.tb_endereco" Multiplicity="1" />
+    <End Role="tb_pedido" Type="Self.tb_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_endereco">
+        <PropertyRef Name="end_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido">
+        <PropertyRef Name="end_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_mer_in_codigo">
+    <End Role="tb_mercado" Type="Self.tb_mercado" Multiplicity="1" />
+    <End Role="tb_pedido" Type="Self.tb_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_mercado">
+        <PropertyRef Name="mer_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido">
+        <PropertyRef Name="mer_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_rem_av_cli_ped_av_mer_in_codigo">
+    <End Role="tb_pedido_avaliacao_mercado" Type="Self.tb_pedido_avaliacao_mercado" Multiplicity="1" />
+    <End Role="tb_pedido_remocao_avaliacao_cliente" Type="Self.tb_pedido_remocao_avaliacao_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pedido_avaliacao_mercado">
+        <PropertyRef Name="ped_av_mer_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido_remocao_avaliacao_cliente">
+        <PropertyRef Name="ped_av_mer_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ped_rem_av_mer_ped_av_cli_in_codigo">
+    <End Role="tb_pedido_avaliacao_cliente" Type="Self.tb_pedido_avaliacao_cliente" Multiplicity="1" />
+    <End Role="tb_pedido_remocao_avaliacao_mercado" Type="Self.tb_pedido_remocao_avaliacao_mercado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pedido_avaliacao_cliente">
+        <PropertyRef Name="ped_av_cli_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_pedido_remocao_avaliacao_mercado">
+        <PropertyRef Name="ped_av_cli_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prod_cat01_in_codigo">
+    <End Role="tb_categoria_n01" Type="Self.tb_categoria_n01" Multiplicity="1" />
+    <End Role="tb_produto" Type="Self.tb_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_categoria_n01">
+        <PropertyRef Name="cat01_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_produto">
+        <PropertyRef Name="cat01_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prod_cat02_in_codigo">
+    <End Role="tb_categoria_n02" Type="Self.tb_categoria_n02" Multiplicity="1" />
+    <End Role="tb_produto" Type="Self.tb_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_categoria_n02">
+        <PropertyRef Name="cat02_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_produto">
+        <PropertyRef Name="cat02_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prod_cat03_in_codigo">
+    <End Role="tb_categoria_n03" Type="Self.tb_categoria_n03" Multiplicity="1" />
+    <End Role="tb_produto" Type="Self.tb_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_categoria_n03">
+        <PropertyRef Name="cat03_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_produto">
+        <PropertyRef Name="cat03_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prod_img_mer_in_codigo">
+    <End Role="tb_produto" Type="Self.tb_produto" Multiplicity="1" />
+    <End Role="tb_produto_img" Type="Self.tb_produto_img" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_produto">
+        <PropertyRef Name="prod_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_produto_img">
+        <PropertyRef Name="prod_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prod_mer_in_codigo">
+    <End Role="tb_mercado" Type="Self.tb_mercado" Multiplicity="1" />
+    <End Role="tb_produto" Type="Self.tb_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_mercado">
+        <PropertyRef Name="mer_in_codigo" />
+      </Principal>
+      <Dependent Role="tb_produto">
+        <PropertyRef Name="mer_in_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EconobuyModelStoreContainer">
+    <EntitySet Name="tb_avaliacao_cliente" EntityType="Self.tb_avaliacao_cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_avaliacao_mercado" EntityType="Self.tb_avaliacao_mercado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_categoria_n01" EntityType="Self.tb_categoria_n01" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_categoria_n02" EntityType="Self.tb_categoria_n02" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_categoria_n03" EntityType="Self.tb_categoria_n03" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cliente" EntityType="Self.tb_cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cliente_img" EntityType="Self.tb_cliente_img" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_endereco" EntityType="Self.tb_endereco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_item" EntityType="Self.tb_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_mercado" EntityType="Self.tb_mercado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_mercado_img" EntityType="Self.tb_mercado_img" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_pedido" EntityType="Self.tb_pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_pedido_avaliacao_cliente" EntityType="Self.tb_pedido_avaliacao_cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_pedido_avaliacao_mercado" EntityType="Self.tb_pedido_avaliacao_mercado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_pedido_remocao_avaliacao_cliente" EntityType="Self.tb_pedido_remocao_avaliacao_cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_pedido_remocao_avaliacao_mercado" EntityType="Self.tb_pedido_remocao_avaliacao_mercado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_produto" EntityType="Self.tb_produto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_produto_img" EntityType="Self.tb_produto_img" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_av_cli_cli_in_codigo" Association="Self.fk_av_cli_cli_in_codigo">
+      <End Role="tb_cliente" EntitySet="tb_cliente" />
+      <End Role="tb_avaliacao_cliente" EntitySet="tb_avaliacao_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_av_mer_mer_in_codigo" Association="Self.fk_av_mer_mer_in_codigo">
+      <End Role="tb_mercado" EntitySet="tb_mercado" />
+      <End Role="tb_avaliacao_mercado" EntitySet="tb_avaliacao_mercado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cat02_cat01_in_codigo" Association="Self.fk_cat02_cat01_in_codigo">
+      <End Role="tb_categoria_n01" EntitySet="tb_categoria_n01" />
+      <End Role="tb_categoria_n02" EntitySet="tb_categoria_n02" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cat03_cat02_in_codigo" Association="Self.fk_cat03_cat02_in_codigo">
+      <End Role="tb_categoria_n02" EntitySet="tb_categoria_n02" />
+      <End Role="tb_categoria_n03" EntitySet="tb_categoria_n03" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cli_end_in_codigo" Association="Self.fk_cli_end_in_codigo">
+      <End Role="tb_endereco" EntitySet="tb_endereco" />
+      <End Role="tb_cliente" EntitySet="tb_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cli_img_cli_in_codigo" Association="Self.fk_cli_img_cli_in_codigo">
+      <End Role="tb_cliente" EntitySet="tb_cliente" />
+      <End Role="tb_cliente_img" EntitySet="tb_cliente_img" />
+    </AssociationSet>
+    <AssociationSet Name="fk_item_ped_in_codigo" Association="Self.fk_item_ped_in_codigo">
+      <End Role="tb_pedido" EntitySet="tb_pedido" />
+      <End Role="tb_item" EntitySet="tb_item" />
+    </AssociationSet>
+    <AssociationSet Name="fk_item_prod_in_codigo" Association="Self.fk_item_prod_in_codigo">
+      <End Role="tb_produto" EntitySet="tb_produto" />
+      <End Role="tb_item" EntitySet="tb_item" />
+    </AssociationSet>
+    <AssociationSet Name="fk_mer_end_in_codigo" Association="Self.fk_mer_end_in_codigo">
+      <End Role="tb_endereco" EntitySet="tb_endereco" />
+      <End Role="tb_mercado" EntitySet="tb_mercado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_mer_img_mer_in_codigo" Association="Self.fk_mer_img_mer_in_codigo">
+      <End Role="tb_mercado" EntitySet="tb_mercado" />
+      <End Role="tb_mercado_img" EntitySet="tb_mercado_img" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_av_cli_av_mer_in_codigo" Association="Self.fk_ped_av_cli_av_mer_in_codigo">
+      <End Role="tb_avaliacao_mercado" EntitySet="tb_avaliacao_mercado" />
+      <End Role="tb_pedido_avaliacao_cliente" EntitySet="tb_pedido_avaliacao_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_av_cli_ped_in_codigo" Association="Self.fk_ped_av_cli_ped_in_codigo">
+      <End Role="tb_pedido" EntitySet="tb_pedido" />
+      <End Role="tb_pedido_avaliacao_cliente" EntitySet="tb_pedido_avaliacao_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_av_mer_av_cli_in_codigo" Association="Self.fk_ped_av_mer_av_cli_in_codigo">
+      <End Role="tb_avaliacao_cliente" EntitySet="tb_avaliacao_cliente" />
+      <End Role="tb_pedido_avaliacao_mercado" EntitySet="tb_pedido_avaliacao_mercado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_av_mer_ped_in_codigo" Association="Self.fk_ped_av_mer_ped_in_codigo">
+      <End Role="tb_pedido" EntitySet="tb_pedido" />
+      <End Role="tb_pedido_avaliacao_mercado" EntitySet="tb_pedido_avaliacao_mercado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_cli_in_codigo" Association="Self.fk_ped_cli_in_codigo">
+      <End Role="tb_cliente" EntitySet="tb_cliente" />
+      <End Role="tb_pedido" EntitySet="tb_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_end_in_codigo" Association="Self.fk_ped_end_in_codigo">
+      <End Role="tb_endereco" EntitySet="tb_endereco" />
+      <End Role="tb_pedido" EntitySet="tb_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_mer_in_codigo" Association="Self.fk_ped_mer_in_codigo">
+      <End Role="tb_mercado" EntitySet="tb_mercado" />
+      <End Role="tb_pedido" EntitySet="tb_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_rem_av_cli_ped_av_mer_in_codigo" Association="Self.fk_ped_rem_av_cli_ped_av_mer_in_codigo">
+      <End Role="tb_pedido_avaliacao_mercado" EntitySet="tb_pedido_avaliacao_mercado" />
+      <End Role="tb_pedido_remocao_avaliacao_cliente" EntitySet="tb_pedido_remocao_avaliacao_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ped_rem_av_mer_ped_av_cli_in_codigo" Association="Self.fk_ped_rem_av_mer_ped_av_cli_in_codigo">
+      <End Role="tb_pedido_avaliacao_cliente" EntitySet="tb_pedido_avaliacao_cliente" />
+      <End Role="tb_pedido_remocao_avaliacao_mercado" EntitySet="tb_pedido_remocao_avaliacao_mercado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prod_cat01_in_codigo" Association="Self.fk_prod_cat01_in_codigo">
+      <End Role="tb_categoria_n01" EntitySet="tb_categoria_n01" />
+      <End Role="tb_produto" EntitySet="tb_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prod_cat02_in_codigo" Association="Self.fk_prod_cat02_in_codigo">
+      <End Role="tb_categoria_n02" EntitySet="tb_categoria_n02" />
+      <End Role="tb_produto" EntitySet="tb_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prod_cat03_in_codigo" Association="Self.fk_prod_cat03_in_codigo">
+      <End Role="tb_categoria_n03" EntitySet="tb_categoria_n03" />
+      <End Role="tb_produto" EntitySet="tb_produto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prod_img_mer_in_codigo" Association="Self.fk_prod_img_mer_in_codigo">
+      <End Role="tb_produto" EntitySet="tb_produto" />
+      <End Role="tb_produto_img" EntitySet="tb_produto_img" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prod_mer_in_codigo" Association="Self.fk_prod_mer_in_codigo">
+      <End Role="tb_mercado" EntitySet="tb_mercado" />
+      <End Role="tb_produto" EntitySet="tb_produto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

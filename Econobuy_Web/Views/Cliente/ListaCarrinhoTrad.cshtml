@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Econobuy_Web.Models.CarrinhoTrad>
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Carrinho Tradicional";
+}
+
+    <div>
+        <button type="button" class="btn btn-outline-warning active  text-white text-decoration-none">
+            @Html.ActionLink("Adicionar Novo Produto", "ListarProdutosModoTradicional", new { id = Convert.ToInt32(Session["mercadoTradID"]), search = "" }, new { @style = "color: white; text-decoration:none; " })
+        </button>
+    </div>
+<br/>
+<h2>Carrinho</h2>
+<hr/>
+<table class="table table-hover table-bordered bg-light">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qtde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+                <div><img src="/Cliente/MostraImagemProduto/@item.ProdID" alt="" height=120 width=120 /></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtde)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.ActionLink("Remover", "DeletaItemCarrinhoTrad", new { id = item.Id }, new { onclick = "return confirm('Confirme a remoção')" })
+            </td>
+        </tr>
+    }
+
+</table>
+<br/>
+<div class="text-center">
+    <button type="button" class="btn btn-outline-warning active btn-lg text-white text-decoration-none">
+        @Html.ActionLink("Finalizar Pedido", "FinalizaPedidoTrad", new { area = "" }, new { @style = "color: white; text-decoration:none; " })
+    </button>
+</div>

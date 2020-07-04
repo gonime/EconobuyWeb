@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="text-center col-md-12">
+    <h1>Bem-vindo a Econobuy!</h1>
+</div>
+
+<div class="row text-center"  style="margin-top: 100px">
+    <div class="col-md-6 ">
+        <h2>Cliente</h2>
+        <p>
+            Clientes entrem aqui!
+        </p>
+        <p><a>@Html.ActionLink("Login", "Index", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none; ", @class = "btn btn-lg btn-primary" })</a></p>
+    </div>
+    <div class="col-md-6 ">
+        <h2>Parceiro</h2>
+        <p>Parceiros entrem aqui!</p>
+        <p><a>@Html.ActionLink("Login", "Index", "Mercado", new { area = "" }, new { @style = "color: white; text-decoration:none; ", @class = "btn btn-lg btn-warning" })</a></p>
+    </div>
+</div>

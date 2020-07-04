@@ -1,0 +1,99 @@
+﻿@model Econobuy_Web.Models.CadastroProduto
+
+@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Cadastrar Produto";
+}
+
+<h2>Produto</h2>
+
+@using (Html.BeginForm("CadastraProduto", "Mercado", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="align-content-center">
+        <hr />
+        <div class="col-md-8 order-md-1">
+            <h4>@Session["Cat01"].ToString() - @Session["Cat02"].ToString() - @Session["Cat03"].ToString()</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextAreaFor(model => model.Descricao, new { @cols = "100", @rows = "4", @style = "width:100%;", @class = "form-control col-md-10" })
+                    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.Codigo_Mercado, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Codigo_Mercado, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    @Html.ValidationMessageFor(model => model.Codigo_Mercado, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control col-md-5", @id = "valor" } })
+                    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(model => model.Tradicional, htmlAttributes: new { @class = "control-label" })
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Tradicional)
+                        @Html.ValidationMessageFor(model => model.Tradicional, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(model => model.Imagem, new { @class = "control-label" })
+                    <input type="file" name="img" id="img" accept="image/x-png,image/jpeg" onchange="fileCheck(this);" />
+                    @Html.ValidationMessageFor(model => model.Imagem)
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                        <input type="submit" value="Salvar" class="btn btn-primary text-white" />
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/inputmask")
+    <script>
+        $(document).ready(function () {
+            $("#valor").inputmask({
+                mask: "999[.99]",
+                greedy: false,
+                positionCaretOnClick: "radixFocus",
+                numericInput: true,
+                definitions: {
+                    '*': {
+                        validator: "[0-9]"
+                    }
+                },
+                rightAlign: false,
+                placeholder: "0"
+            });
+        });
+    </script>
+}

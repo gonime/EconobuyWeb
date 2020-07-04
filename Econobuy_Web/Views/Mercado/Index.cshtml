@@ -1,0 +1,71 @@
+﻿@model Econobuy_Web.Models.tb_mercado
+
+@{
+    ViewBag.Title = "Mercado";
+}
+
+@using (Html.BeginForm("LoginMercado", "Mercado"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Login</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-md-12 order-md-1 ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form role="form">
+                            <div class="container">
+                                <div class="row marketing">
+                                    <div class="col-lg-4">
+
+                                        <h4>Entre aqui!</h4>
+                                        <br />
+                                        <div class="form-group">
+                                            <h5>Usuário</h5>
+                                            @Html.EditorFor(model => model.mer_st_user, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                                            @Html.ValidationMessageFor(model => model.mer_st_user, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            <h5>Senha</h5>
+                                            @Html.EditorFor(model => model.mer_st_senha, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                                            @Html.ValidationMessageFor(model => model.mer_st_senha, "", new { @class = "text-danger" })
+                                            <a>@Html.ActionLink("Esqueci minha senha", "RecuperarSenha", "Cliente", new { area = "" })</a>
+                                            <div style="color: red">
+                                                @{
+                                                    if (IsPost)
+                                                    {
+                                                        @TempData["Erro"]
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-offset-2">
+                                            <input type="submit" value="Login" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                    </div>
+
+                                    <div class="col-lg-4">
+
+                                        <h4>Ou entre em contato conosco para fazer seu cadastro!</h4>
+                                        <br />
+                                        <h5>sistemaeconobuy@gmail.com</h5>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+}

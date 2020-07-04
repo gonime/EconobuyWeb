@@ -1,0 +1,195 @@
+﻿@model Econobuy_Web.Models.CadastroCliente
+
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+
+
+
+@using (Html.BeginForm("CadastraCliente", "Cliente"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="align-content-center" style="margin-top:200px">
+        <h3>Cadastre-se</h3>
+        <hr />
+        <div class="col-md-8 order-md-1">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control col-md-11" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label " })
+                    @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+                    <div style="color: red">
+                        @{
+                            if (TempData["ErroUser"] != null)
+                            {
+                                @TempData["ErroUser"]
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @id = "cpf", @class = "form-control col-md-8" } })
+                    @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 mb-3">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control col-md-12", @id = "email" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    <div style="color: red">
+                        @{
+                            if (TempData["ErroEmail"] != null)
+                            {
+                                @TempData["ErroEmail"]
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control col-md-8", @id = "cep" } })
+                    @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.UF, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.UF, new { htmlAttributes = new { @class = "form-control col-md-10", @id = "uf" } })
+                    @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-8 mb-3">
+                    @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label " })
+                    @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control col-md-10", @id = "cidade" } })
+                    @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 mb-3">
+                    @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control col-md-12", @id = "rua" } })
+                    @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                    @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control", @id = "bairro" } })
+                    @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(model => model.Telefone_1, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Telefone_1, new { htmlAttributes = new { @class = "form-control", @id = "telefone" } })
+                    @Html.ValidationMessageFor(model => model.Telefone_1, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(model => model.Telefone_2, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Telefone_2, new { htmlAttributes = new { @class = "form-control", @id = "telefone2" } })
+                    @Html.ValidationMessageFor(model => model.Telefone_2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" name="submitButton" value="Cadastrar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/inputmask")
+    <script>
+        $(document).ready(function () {
+            $("#telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+            $("#telefone2").inputmask("mask", { "mask": "(99) 9999-99999" });
+            $("#cpf").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#cep").inputmask("mask", { "mask": "99999-999" });
+            $("#uf").inputmask("mask", { "mask": "AA" });
+            $("#email").inputmask("email");
+            function limpa_formulário_cep() {
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+                $("#ibge").val("");
+            }
+            $("#cep").blur(function () {
+                var cep = $(this).val().replace(/\D/g, '');
+                if (cep != "") {
+                    var validacep = /^[0-9]{8}$/;
+                    if (validacep.test(cep)) {
+                        $("#rua").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade").val("...");
+                        $("#uf").val("...");
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                            if (!("erro" in dados)) {
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                            }
+                            else {
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    }
+                    else {
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                }
+                else {
+                    limpa_formulário_cep();
+                }
+            });
+        });
+
+    </script>
+}
+

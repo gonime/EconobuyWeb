@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Econobuy_Web.Models.ListaMercadosModoTradicional>
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    if (Session["mercadoTradID"] != null)
+    {
+        Response.Redirect("~/Cliente/ListarProdutosModoTradicional/" + Convert.ToInt32(Session["mercadoTradID"]));
+    }
+    ViewBag.Title = "Pedido Tradicional";
+}
+
+
+
+<h2>Selecione um mercado</h2>
+
+<br />
+@using (Html.BeginForm("NovoPedidoTradicional", "Cliente", FormMethod.Get))
+{
+    @Html.DropDownList("coluna", new List<SelectListItem> {
+                new SelectListItem { Value = "Nome", Text = "Nome" },
+                new SelectListItem { Value = "Bairro", Text = "Bairro" },
+                new SelectListItem { Value = "Logradouro", Text = "Logradouro" }
+                }, new { @class = "myselect", @style = "color: black" }) @Html.TextBox("search", null, new { @style = "margin-left: 5px" })
+                <input type="submit" value="Buscar" class="btn btn-warning text-white">
+                @Html.ActionLink("Limpar Pesquisa", "NovoPedidoTradicional", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none;", @class = "btn btn-warning" })
+            }
+
+<br />
+<table class="table table-hover table-bordered bg-light">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Mercado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avaliacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mercado)
+                <div><img src="/Cliente/MostraLogoMercado/@item.MerID" alt="" height=120 width=120 /></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Avaliacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logradouro),
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone_1)
+            </td>
+            <td>
+                @if (item.Telefone_2 == "(__) ____-_____" || item.Telefone_2 == "(  )     -" || item.Telefone_2 == "")
+                {<p>Não Informado</p>}
+                else
+                {@Html.DisplayFor(modelItem => item.Telefone_2)}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Selecionar", "ListarProdutosModoTradicional", new { id = item.MerID, search = "" })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>Obs: Mercados com avaliação (0.00) ainda não foram avaliados!</p>

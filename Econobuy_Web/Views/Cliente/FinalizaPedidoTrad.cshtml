@@ -1,0 +1,146 @@
+﻿@model Econobuy_Web.Models.FinalizaPedidoTrad
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Finalizar Pedido";
+}
+
+
+    <div class="col-md-10">
+        <h2>Pedido</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-10">
+                <h4>@Html.DisplayFor(model => model.Mercado, new { htmlAttributes = new { @class = "form-control" } })</h4>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row"><div class="col-md-12"><h4>Endereço</h4></div></div>
+        <br />
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "control-label" })</h5></div>
+
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label" })</h5></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label" })</h5></div>
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label" })</h5></div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row"><div class="col-md-12"><h4>Contato</h4></div></div>
+        <br />
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })</h5></div>
+            <div class="col-md-3"><h5>@Html.LabelFor(model => model.Telefone_1, htmlAttributes: new { @class = "control-label" })</h5></div>
+            <div class="col-md-3"><h5>@Html.LabelFor(model => model.Telefone_2, htmlAttributes: new { @class = "control-label" })</h5></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-md-3">
+                @Html.DisplayFor(model => model.Telefone_1, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            @if (Model.Telefone_2 == "(__) ____-_____")
+            {<div class="col-md-3">
+                    Não informado
+                </div> }
+            else
+            {<div class="col-md-3">
+                    @Html.DisplayFor(model => model.Telefone_2, new { htmlAttributes = new { @class = "form-control" } })
+                </div>}
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6"><h5>@Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label" })</h5></div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <hr />
+
+        <div class="row"><div class="col-md-12"><h4>Produtos</h4></div></div>
+        <br />
+
+        <table class="table table-hover table-bordered bg-light">
+            <tr class="bg-dark text-light">
+                <th>
+                    @Html.DisplayNameFor(model => model.Carrinho[0].Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Carrinho[0].Qtde)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Carrinho[0].Valor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Carrinho[0].ValorTotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Carrinho[0].Descricao)
+                </th>
+            </tr>
+            @foreach (var item in Model.Carrinho)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                        <div><img src="/Cliente/MostraImagemProduto/@item.ProdID" alt="" height=120 width=120 /></div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Qtde)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                </tr>
+            }
+        </table>
+
+
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-warning active btn-lg  text-white text-decoration-none">
+                @Html.ActionLink("Finalizar Pedido", "FinalizarPedidoTrad", new { area = "" }, new { @style = "color: white; text-decoration:none; " })
+            </button>
+        </div>
+    </div>

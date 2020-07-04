@@ -1,0 +1,72 @@
+﻿@model Econobuy_Web.Models.PedidoRemocao
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Pedido de Remoção";
+}
+
+
+<div class="col-md-10">
+    <h4>Pedido de Remoção</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Sua mensagem</h5>
+        </div>
+
+        <div class=" col-md-12">
+            @Html.DisplayFor(model => model.MsgRequisitante)
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Mensagem Administrador</h5>
+        </div>
+
+        <div class=" col-md-12">
+            @if (Model.Status != "Em análise")
+            {@Html.DisplayFor(model => model.MsgAdmin)}
+        else
+        { <p>Pedido em análise</p>}
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Status</h5>
+        </div>
+        <div class="col-md-6">
+            <h5>Nota Recebida</h5>
+        </div>
+
+        <div class=" col-md-6">
+            @Html.DisplayFor(model => model.Status)
+        </div>
+
+        <div class=" col-md-6">
+            @Html.DisplayFor(model => model.NotaAvaliacao)
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Descrição da avaliação</h5>
+        </div>
+
+        <div class=" col-md-12">
+            @Html.DisplayFor(model => model.DescricaoAvaliacao)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href='javascript:history.go(-1)' class="btn btn-warning">Voltar ao pedido</a>
+        </div>
+    </div>
+</div>

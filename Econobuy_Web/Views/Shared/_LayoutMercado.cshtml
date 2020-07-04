@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Econobuy - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="
+    height: 100%;
+    background-color: rgb(247, 244, 195)">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <img src="/Mercado/MostraLogo/@Convert.ToInt32(Session["mercadoID"])" alt="" height=30 width=30 />
+        <h3 class="px-2">@Html.ActionLink(Session["mercadoNome"].ToString(), "Home", "Mercado", new { area = "" }, new { @style = "color: rgb(217, 217, 2); text-decoration:none; " })</h3>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item active px-2">
+                    <a>@Html.ActionLink("Consultar Pedidos", "ConsultarPedidos", "Mercado", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                </li>
+                <li class="nav-item dropdown px-2">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" style = "color: white; text-decoration:none; ">Produtos</a>
+                    <div class="dropdown-menu text-center bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item">@Html.ActionLink("Consultar Produtos", "ConsultarProdutos", "Mercado", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                        <hr/>
+                        <a class="dropdown-item">@Html.ActionLink("Novo Produto", "CadastrarProdutoDepartamento", "Mercado", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a>@Html.ActionLink("Alterar Usuário", "AlterarUsuario", "Mercado", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</a>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-primary ml-auto mr-1">@Html.ActionLink("Logout", "Logout", "Mercado", new { area = "" }, new { @style = "color: white; text-decoration:none; " })</button>
+    </nav>
+    <div class="container body-content">
+        <br />
+        <br />
+        @RenderBody()
+        <br />
+        <br />
+        <footer class="fixed-bottom">
+            <p>&copy;@DateTime.Now.Year - Econobuy</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Econobuy_Web.Models.ConsultaProdutos>
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Produtos";
+}
+
+
+<div>
+    <button type="button" class="btn btn-outline-warning active  text-white text-decoration-none">
+        @Html.ActionLink("Escolher outro mercado", "excluirPedidoTrad", new { area = "" }, new { @style = "color: white; text-decoration:none; " })
+    </button>
+</div>
+
+<br />
+<h2>Produtos</h2>
+
+<br />
+@using (Html.BeginForm("ListarProdutosModoTradicional", "Cliente", new { id = Convert.ToInt32(Session["mercadoTradID"]) }, FormMethod.Get))
+{
+    @Html.DropDownList("coluna", new List<SelectListItem> {
+                new SelectListItem { Value = "Nome", Text = "Nome" },
+                new SelectListItem { Value = "Departamento", Text = "Departamento" },
+                new SelectListItem { Value = "Categoria", Text = "Categoria" },
+                new SelectListItem { Value = "Produto", Text = "Produto" }
+                }, new { @class = "myselect", @style = "color: black" }) @Html.TextBox("search", null, new { @style = "margin-left: 5px" })
+                <input type="submit" value="Buscar" class="btn btn-warning text-white">
+                @Html.ActionLink("Limpar Pesquisa", "ListarProdutosModoTradicional", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none;", @class = "btn btn-warning" })
+            }
+
+<br />
+<table class="table table-hover table-bordered bg-light">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria_01)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria_02)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria_03)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+                <div><img src="/Cliente/MostraImagemProduto/@item.Id" alt="" height=120 width=120 /></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria_01)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria_02)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria_03)
+            </td>
+            <td>
+                @Html.ActionLink("Visualizar", "MostraProduto", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

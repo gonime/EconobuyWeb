@@ -1,0 +1,35 @@
+﻿@model Econobuy_Web.Models.tb_categoria_n02
+
+@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Nova Categoria";
+}
+
+
+@using (Html.BeginForm("CadastraCat02", "Mercado"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-10">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-12"><h4>Nova Categoria</h4></div>
+            <hr />
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.cat02_st_nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cat02_st_nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-primary text-white" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,33 @@
+﻿@model Econobuy_Web.Models.tb_pedido
+
+@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Aprovar Pedido";
+}
+
+<h2>Reprovar Pedido</h2>
+
+@using (Html.BeginForm("reprovarPedido", "Mercado"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ped_st_msg, new { @cols = "100", @rows = "4", @style = "width:100%;", @class = "form-control col-md-10", @placeholder = "Escreva uma mensagem para seu cliente aqui!" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10 text-center">
+                <input type="submit" value="Reprovar Pedido" class="btn btn-outline-primary active text-white text-decoration-none" />
+            </div>
+        </div>
+    </div>
+}
+

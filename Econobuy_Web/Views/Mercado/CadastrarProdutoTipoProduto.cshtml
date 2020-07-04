@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Econobuy_Web.Models.CadastroProduto>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMercado.cshtml";
+    if (Session["mercadoID"] == null)
+    {
+        Response.Redirect("~/Mercado/Index");
+    }
+    ViewBag.Title = "Cadastrar Produto";
+}
+
+
+<p><btn>@Html.ActionLink("Novo Tipo de Produto", "CadastrarNovoTipoProduto", "Mercado", new { id = Convert.ToInt32(Session["Cat02ID"]), nome = Session["Cat02"].ToString() }, new { @style = "color: white; text-decoration:none; ", @class = "btn btn-primary" })</btn></p>
+<table class="table table-hover table-bordered bg-light">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Cat03)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cat03)
+            </td>
+            <td>
+                @Html.ActionLink("Selecionar", "CadastrarProduto", new { id = item.Cat03ID, nome = item.Cat03 })
+            </td>
+        </tr>
+    }
+
+</table>

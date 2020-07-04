@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Econobuy_Web.Models.ListarProdutosModoEconobuy>
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Novo Pedido";
+}
+
+<h2>Novo Pedido</h2>
+
+<br />
+@if (Session["Itens"] != null)
+{
+    <div>
+        <button type="button" class="btn btn-outline-warning active  text-white text-decoration-none">
+            @Html.ActionLink("Ver Carrinho", "ListaCarrinho", new { search = "" }, new { @style = "color: white; text-decoration:none; " })
+        </button>
+    </div>
+}
+
+<br />
+@using (Html.BeginForm("NovoPedido", "Cliente", FormMethod.Get))
+{
+    @Html.TextBox("search", null, new { @style = "margin-left: 5px; margin-top:20px" })
+    <input type="submit" value="Buscar" class="btn btn-warning text-white">
+    @Html.ActionLink("Limpar Pesquisa", "NovoPedido", "Cliente", new { area = "" }, new { @style = "color: white; text-decoration:none;", @class = "btn btn-warning" })
+}
+
+<br />
+<table class="table table-hover table-bordered bg-light" style="margin-top:20px">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Cat03)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cat03)
+            </td>
+            <td>
+                @Html.ActionLink("Adicionar", "MostraProdutoModoEconobuy", new { id = item.Cat03ID })
+            </td>
+        </tr>
+    }
+
+</table>

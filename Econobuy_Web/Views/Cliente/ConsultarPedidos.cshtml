@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Econobuy_Web.Models.ConsultaPedidosCliente>
+
+@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    if (Session["clienteID"] == null)
+    {
+        Response.Redirect("~/Cliente/Index");
+    }
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>Pedidos</h2>
+<br />
+@using (Html.BeginForm("ConsultarPedidos", "Cliente", FormMethod.Get))
+{
+    @Html.DropDownList("coluna", new List<SelectListItem> {
+                new SelectListItem { Value = "Status", Text = "Status" },
+                new SelectListItem { Value = "Mercado", Text = "Mercado" }
+                }, new { @class = "myselect", @style = "color: black" }) @Html.TextBox("search", null, new { @style = "margin-left: 5px" })
+                <input type="submit" value="Buscar" class="btn btn-warning text-white">
+            }
+
+<br />
+<table class="table table-hover table-bordered bg-light">
+    <tr class="bg-dark text-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mercado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mercado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logradouro)
+            </td>
+            <td>
+                @Html.ActionLink("Visualizar", "VisualizarPedido", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
